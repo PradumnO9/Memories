@@ -306,7 +306,7 @@ const MyProfile = ({ socket, updateData }) => {
           <br />
           <br />
           <div className={isTableOrMobile ? "flex-column" : "flex_row"}>
-            <div className="flex_column" style={{ alignItems: "center", margin: "auto" }}>
+            <div className="flex_column" style={{ alignItems: "center", marginLeft: "auto", marginRight: "auto" }}>
               <h4 className="data_profile">Images upload by you</h4>
               <div>
                 {images &&
@@ -416,7 +416,7 @@ const MyProfile = ({ socket, updateData }) => {
                   })}
               </div>
             </div>
-            <div className="flex_column" style={{ alignItems: "center", margin: "auto" }}>
+            <div className="flex_column" style={{ alignItems: "center", marginLeft: "auto", marginRight: "auto" }}>
               <h4 className="data_profile">Files upload by you</h4>
               <div>
                 {files &&
