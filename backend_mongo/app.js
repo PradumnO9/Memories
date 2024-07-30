@@ -8,7 +8,7 @@ const userRouter = require("./Routes/UserRoutes"); // all user related routes
 const FIRouter = require("./Routes/FIRoutes"); // all files and images related routes
 
 const corsConfigure = {
-    origin: "",
+    origin: "https://memories-ui-ten.vercel.app",
     credential: true,
     methods: ["GET", "POST", "PUT", "DELETE"]
 }
