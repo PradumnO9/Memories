@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalData } from "../App"; 
+import { GlobalData } from "../App";
 import axios from "axios";
 import PageNotFound from "./PageNotFound";
 import { USER_API } from "./utils/constants";
@@ -11,26 +11,38 @@ const AllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    axios.get(`${USER_API}/allusers`).then((res) => {
-      setAllUsers(res.data.allUsers);
-    }).catch((err) => {
-      console.log("err", err);
-    });
+    axios
+      .get(`${USER_API}/allusers`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      })
+      .then((res) => {
+        setAllUsers(res.data.allUsers);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   }, []);
 
   return (
     <>
-      {isLoggedIn ? <PageNotFound /> : <div>
-        {allUsers.map((data, index) => {
-          return (
-            <ul key={index}>
-              <div className="container">
-                <div className="container__username">{data.username}</div>
-              </div>
-            </ul>
-          );
-        })}
-      </div>}
+      {isLoggedIn ? (
+        <PageNotFound />
+      ) : (
+        <div>
+          {allUsers.map((data, index) => {
+            return (
+              <ul key={index}>
+                <div className="container">
+                  <div className="container__username">{data.username}</div>
+                </div>
+              </ul>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
