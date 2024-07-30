@@ -6,7 +6,7 @@ const { UserModel, ImageModel, FileModel } = require("../Module/Schema");
 exports.getUploadedFile = async (req, res) => {
   try {
     const fileName = req.params.fileName;
-    const dir = path.join(__dirname, "../UploadFile", fileName);
+    const dir = path.join(__dirname, "../UploadImage", fileName);
     res.setHeader("Content-Type", "application/pdf");
     // res.setHeader("Content-Type", `application/${mimeTypes}`);
     res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
