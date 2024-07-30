@@ -7,6 +7,11 @@ const { createServer } = require("node:http");
 const userRouter = require("./Routes/UserRoutes"); // all user related routes
 const FIRouter = require("./Routes/FIRoutes"); // all files and images related routes
 
+const corsConfigure = {
+    origin: "",
+    credential: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
@@ -15,6 +20,8 @@ const io = new Server(server, {
     }
 });
 
+app.options("", cors(corsConfigure));
+app.use(cors(corsConfigure));
 // const io = new Server(server, {
 //     cors: {
 //         origin: "http://localhost:3000"
