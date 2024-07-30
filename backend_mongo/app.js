@@ -14,6 +14,13 @@ const io = new Server(server, {
         origin: "https://memories-ui-ten.vercel.app"
     }
 });
+
+// const io = new Server(server, {
+//     cors: {
+//         origin: "http://localhost:3000"
+//     }
+// });
+
 const PORT = process.env.PORT || 7000;
 
 app.use(express.json());
@@ -44,7 +51,7 @@ io.on('connection', (socket) => {
     })
 });
 
-app.get("/", (re, res) => {
+app.get("/", (req, res) => {
     res.json("Hello")
 })
 
