@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 import './UpdateImage.css'
+import { FI_API } from "../utils/constants";
 
 const UpdateFile = (props) => {
   const [data, setData] = useState({
@@ -17,7 +18,7 @@ const UpdateFile = (props) => {
     } else {
       axios
         .put(
-          `http://localhost:7000/fi/updateFile/${props.fileId}/${props.userId}`, data
+          `${FI_API}/updateFile/${props.fileId}/${props.userId}`, data
         )
         .then((res) => {
           alert(res.data.message);

@@ -7,6 +7,7 @@ import { IoMdEyeOff } from "react-icons/io";
 
 import "./Register.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { USER_API } from "../utils/constants";
 
 const Register = () => {
   const [user, setuser] = useState({
@@ -125,11 +126,10 @@ const Register = () => {
       setMandatory(message.MANDATORY);
     } else {
       axios
-        .post("http://localhost:7000/users/register", user)
+        .post(`${USER_API}/register`, user)
         .then((res) => {
           alert(res.data.message);
           navigate("/login");
-          window.location.reload();
         })
         .catch((err) => {
           console.log(err);

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { GoHeartFill } from "react-icons/go";
+import { FI_API } from "../utils/constants";
 
 import './LikeDislike.css';
 
@@ -9,7 +10,7 @@ const LikeImageButton = (props) => {
   const handleLike = (e) => {
     axios
       .put(
-        `http://localhost:7000/fi/likeImage/${props.userId}/${props.imageId}`
+        `${FI_API}/likeImage/${props.userId}/${props.imageId}`
       )
       .then((res) => {
         props.socket.emit("likeAndDislike", res.data.totalLikes);

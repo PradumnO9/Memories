@@ -17,6 +17,7 @@
 - Register
 - Login => email & password
 - Upload Images and files => Can choose during upload using Radio button (Image || File)
+- Used Redux to handle Image and File data 
 - Show Posts
     - Images and Files are seperated column wise
     - Each Post have 

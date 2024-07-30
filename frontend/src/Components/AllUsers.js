@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalData } from "../App"; 
 import axios from "axios";
 import PageNotFound from "./PageNotFound";
+import { USER_API } from "./utils/constants";
 
 import "./AllUsers.css";
 
@@ -10,7 +11,7 @@ const AllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:7000/users/allusers").then((res) => {
+    axios.get(`${USER_API}/allusers`).then((res) => {
       setAllUsers(res.data.allUsers);
     }).catch((err) => {
       console.log("err", err);

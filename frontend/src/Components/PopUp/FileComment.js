@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import EmojiPicker from 'emoji-picker-react';
 import { CiFaceSmile } from 'react-icons/ci';
+import { FI_API } from "../utils/constants";
 
 import './Comment.css';
 
@@ -37,7 +38,7 @@ const FileComment = (props) => {
       alert("Please write something!");
     } else {
       axios
-        .put("http://localhost:7000/fi/fileComment", data)
+        .put(`${FI_API}/fileComment`, data)
         .then((res) => {
           // alert(res.data.message);
           props.socket.emit("FileComment", res.data.allComments);

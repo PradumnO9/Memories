@@ -22,6 +22,7 @@ import ImageComment from "./PopUp/ImageComment";
 import FileComment from "./PopUp/FileComment";
 import UpdateUserDetails from "./PopUp/UpdateUserDetails";
 import PageNotFound from "./PageNotFound";
+import { FI_API, USER_API } from "./utils/constants";
 
 import "./MyProfile.css";
 
@@ -113,7 +114,7 @@ const MyProfile = ({ socket, updateData }) => {
     // console.log(myProfile);
     const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get(`http://localhost:7000/users/userProfile/${userid}`, { headers })
+      .get(`${USER_API}/userProfile/${userid}`, { headers })
       .then((res) => {
         setMyProfile(res.data.userData);
       })
@@ -170,7 +171,7 @@ const MyProfile = ({ socket, updateData }) => {
     e.preventDefault();
     let parameter = e.target.innerText;
     axios
-      .get(`http://localhost:7000/fi/getUploadedFile/${parameter}`, {
+      .get(`${FI_API}/getUploadedFile/${parameter}`, {
         responseType: "blob",
       })
       .then((res) => {
@@ -219,7 +220,7 @@ const MyProfile = ({ socket, updateData }) => {
     if (choose) {
       axios
         .delete(
-          `http://localhost:7000/fi/deleteImage/${imageIdRef.current}/${userid}`
+          `${FI_API}/deleteImage/${imageIdRef.current}/${userid}`
         )
         .then((res) => {
           alert(res.data.message);
@@ -254,7 +255,7 @@ const MyProfile = ({ socket, updateData }) => {
     if (choose) {
       axios
         .delete(
-          `http://localhost:7000/fi/deleteFile/${fileIdRef.current}/${userid}`
+          `${FI_API}/deleteFile/${fileIdRef.current}/${userid}`
         )
         .then((res) => {
           alert(res.data.message);
@@ -321,7 +322,7 @@ const MyProfile = ({ socket, updateData }) => {
                         </Card.Title>
                         <Card.Img
                           variant="top"
-                          src={`http://localhost:7000/fi/showImage/${data.image.split("\\")[1]
+                          src={`${FI_API}/showImage/${data.image.split("\\")[1]
                             }`}
                         />
                         <Card.Body>

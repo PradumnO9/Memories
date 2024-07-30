@@ -18,6 +18,7 @@ import LikeFileButton from "./LikeDislikeButtons/LikeFileButton";
 import DislikeFileButton from "./LikeDislikeButtons/DislikeFileButton";
 import ImageComment from "./PopUp/ImageComment";
 import FileComment from "./PopUp/FileComment";
+import { FI_API } from "./utils/constants";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ShowImage.css";
@@ -98,7 +99,7 @@ const ShowImage = ({ socket }) => {
     e.preventDefault();
     let parameter = e.target.innerText;
     axios
-      .get(`http://localhost:7000/fi/getUploadedFile/${parameter}`, {
+      .get(`${FI_API}/getUploadedFile/${parameter}`, {
         responseType: "blob",
       })
       .then((res) => {
@@ -159,7 +160,7 @@ const ShowImage = ({ socket }) => {
                         </Card.Title>
                         <Card.Img
                           variant="top"
-                          src={`http://localhost:7000/fi/showImage/${data.image.split("\\")[1]
+                          src={`${FI_API}/showImage/${data.image.split("\\")[1]
                             }`}
                         />
                         <Card.Body>

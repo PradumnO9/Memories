@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import "./UpdateUserDetails.css"
+import { USER_API } from "../utils/constants";
 
 const UpdateUserDetails = ({ token, userid, updateCurrentUserDetails }) => {
     const [updateData, setUpdateData] = useState({
@@ -13,7 +14,7 @@ const UpdateUserDetails = ({ token, userid, updateCurrentUserDetails }) => {
         e.preventDefault();
         const headers = { Authorization: `Bearer ${token}` };
         axios
-            .put(`http://localhost:7000/users/updatedetails/${userid}`, updateData, {
+            .put(`${USER_API}/updatedetails/${userid}`, updateData, {
                 headers,
             })
             .then((res) => {

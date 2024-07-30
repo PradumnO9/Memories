@@ -6,6 +6,7 @@ import EmojiPicker from 'emoji-picker-react';
 import { CiFaceSmile } from 'react-icons/ci';
 
 import './Comment.css';
+import { FI_API } from "../utils/constants";
 
 const ImageComment = (props) => {
   const [data, setData] = useState({
@@ -37,7 +38,7 @@ const ImageComment = (props) => {
       alert("Please write something!");
     } else {
       axios
-        .put("http://localhost:7000/fi/imageComment", data)
+        .put(`${FI_API}/imageComment`, data)
         .then((res) => {
           // alert(res.data.message); 
           props.socket.emit("ImageComment", res.data.allComments)

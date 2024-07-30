@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { GlobalData } from "../../App"; 
 import axios from "axios";
+import { FI_API } from "../utils/constants";
 
 import PageNotFound from "../PageNotFound";
 
@@ -112,7 +113,7 @@ const ImageForm = ({ updateData }) => {
       setMandatory("Please fill all the fields!");
     } else {
       axios
-        .post(`http://localhost:7000/fi/createImage/${userid}`, data)
+        .post(`${FI_API}/createImage/${userid}`, data)
         .then((res) => {
           if (res.data.status === "Success") {
             alert(res.data.message);

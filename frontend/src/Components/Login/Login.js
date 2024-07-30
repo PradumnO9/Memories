@@ -10,6 +10,7 @@ import { GlobalData } from "../../App";
 
 import "./Login.css";
 import PageNotFound from "../PageNotFound";
+import { USER_API } from "../utils/constants";
 
 const Login = () => {
   const { loginLogout ,isLoggedIn } = useContext(GlobalData);
@@ -93,7 +94,7 @@ const Login = () => {
       setMandatory("");
       if (email && password) {
         axios
-          .post("http://localhost:7000/users/login", user)
+          .post(`${USER_API}/login`, user)
           .then((res) => {
             if (res.data.status === "false") {
               alert(res.data.message);

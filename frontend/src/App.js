@@ -16,6 +16,7 @@ import MyProfile from "./Components/MyProfile";
 import ImageUpload from "./Components/ImageUpload/ImageUpload";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import { FI_API, USER_API } from "./Components/utils/constants";
 
 import "./App.css";
 import PageNotFound from "./Components/PageNotFound";
@@ -48,7 +49,7 @@ function App() {
   useEffect(() => {
     const headers = { Authorization: `Bearer ${token}` };
     axios
-      .get("http://localhost:7000/users/userdetails", { headers })
+      .get(`${USER_API}/userdetails`, { headers })
       .then((res) => {
         // setAllUsers(res.data.allUsers);
         dispatch(addUsers(res.data.allUsers));
@@ -62,7 +63,7 @@ function App() {
   // For Images => redux store
   useEffect(() => {
     axios
-      .get("http://localhost:7000/fi/getAllImages")
+      .get(`${FI_API}/getAllImages`)
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);
@@ -75,7 +76,7 @@ function App() {
       });
     // For Files => redux store
     axios
-      .get("http://localhost:7000/fi/getAllFiles")
+      .get(`${FI_API}/getAllFiles`)
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);
