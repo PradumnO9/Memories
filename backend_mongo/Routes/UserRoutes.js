@@ -26,7 +26,7 @@ router.get('/allusers', userController.getAllUser); // done
 router.get('/userdetails', authToken, userController.userDetails); // done
 
 router.get('/userProfile/:userId', authToken, userController.getUserProfile); // done
-1
+
 router.put('/updatedetails/:userId', authToken, userController.updateDetails); // done
 
 module.exports = router; 
