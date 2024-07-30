@@ -44,6 +44,9 @@ io.on('connection', (socket) => {
     })
 });
 
+app.get("/", (re, res) => {
+    res.json("Hello")
+})
 
 exports.io = io;
 
