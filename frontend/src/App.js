@@ -48,7 +48,7 @@ function App() {
   }
 
   useEffect(() => {
-    const headers = { Authorization: `Bearer ${token}` };
+    const headers = { Authorization: `Bearer ${token}`,  "Access-Control-Allow-Origin": "*", };
     axios
       .get(`${USER_API}/userdetails`, { headers })
       .then((res) => {
@@ -64,7 +64,11 @@ function App() {
   // For Images => redux store
   useEffect(() => {
     axios
-      .get(`${FI_API}/getAllImages`)
+      .get(`${FI_API}/getAllImages`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      })
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);
@@ -77,7 +81,11 @@ function App() {
       });
     // For Files => redux store
     axios
-      .get(`${FI_API}/getAllFiles`)
+      .get(`${FI_API}/getAllFiles`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      })
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);
