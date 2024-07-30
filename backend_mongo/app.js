@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const { Server } = require("socket.io");
 const { createServer } = require("node:http");
 
-const userRouter = require("./Routes/UserRoutes"); // all user related routes
-const FIRouter = require("./Routes/FIRoutes"); // all files and images related routes
+const userRouter = require("./Routes/UserRoutes");
+const FIRouter = require("./Routes/FIRoutes"); 
 
 const app = express();
 const server = createServer(app);
