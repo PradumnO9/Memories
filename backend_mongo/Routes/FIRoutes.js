@@ -33,15 +33,15 @@ const storage2 = multer.diskStorage({
 
 const uploadImage = multer({ limits: 500000, storage: storage2 });
 
-router.get('/getAllFiles', FIController.getAllFiles); // done
+router.get('/getAllFiles', FIController.getAllFiles); 
 
-router.get('/getUploadedFile/:fileName', FIController.getUploadedFile); // done
+router.get('/getUploadedFile/:fileName', FIController.getUploadedFile); 
 
-router.post('/createImage/:userId', uploadImage.single("file"), FIController.createImage); // done
+router.post('/createImage/:userId', uploadImage.single("file"), FIController.createImage); 
 
-router.get('/getAllImages', FIController.getAllImages); // done
+router.get('/getAllImages', FIController.getAllImages); 
 
-router.get('/showImage/:path', FIController.showImage); // done
+router.get('/showImage/:path', FIController.showImage); 
 
 router.put('/likeImage/:userId/:imageId', FIController.likeImage);
 

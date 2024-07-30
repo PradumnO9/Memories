@@ -17,16 +17,15 @@ const authToken = (req, res, next) => {
 
 const router = express.Router();
 
-router.post('/register', userController.registerUser); // done
+router.post('/register', userController.registerUser); 
 
-router.post('/login', userController.loginUser); // done
+router.post('/login', userController.loginUser); 
 
-router.get('/allusers', userController.getAllUser); // done
+router.get('/allusers', userController.getAllUser); 
 
-router.get('/userdetails', authToken, userController.userDetails); // done
+router.get('/userdetails', authToken, userController.userDetails); 
 
-router.get('/userProfile/:userId', authToken, userController.getUserProfile); // done
+router.get('/userProfile/:userId', authToken, userController.getUserProfile); 
 
-router.put('/updatedetails/:userId', authToken, userController.updateDetails); // done
-
+router.put('/updatedetails/:userId', authToken, userController.updateDetails);
 module.exports = router; 
