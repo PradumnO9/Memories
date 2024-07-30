@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const { Server } = require("socket.io");
 const { createServer } = require("node:http");
 
-const userRouter = require("./Routes/UserRoutes");
+const userRouter = require("./Routes/UserRoutes"); 
 const FIRouter = require("./Routes/FIRoutes"); 
 
 const app = express();
@@ -26,7 +26,9 @@ const PORT = process.env.PORT || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({
+    origin: "https://memories-ui-ten.vercel.app"
+}));
 
 app.use("/users", userRouter);
 app.use("/fi", FIRouter);
