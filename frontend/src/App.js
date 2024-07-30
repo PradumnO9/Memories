@@ -27,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [updateReduxStore, setUpdateReduxStore] = useState(false);
+  axios.defaults.withCredentials = true;
 
   const token = Cookies.get("token");
   // for storinng current user to local strorage
