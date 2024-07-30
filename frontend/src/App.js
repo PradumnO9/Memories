@@ -45,21 +45,23 @@ function App() {
 
   const loginLogout = (data) => {
     setIsLoggedIn(data);
-  }
+  };
 
   useEffect(() => {
-    const headers = { Authorization: `Bearer ${token}`,  "Access-Control-Allow-Origin": "*", };
-    axios
-      .get(`${USER_API}/userdetails`, { headers })
-      .then((res) => {
-        // setAllUsers(res.data.allUsers);
-        dispatch(addUsers(res.data.allUsers));
-      });
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+    };
+    axios.get(`${USER_API}/userdetails`, { headers }).then((res) => {
+      // setAllUsers(res.data.allUsers);
+      dispatch(addUsers(res.data.allUsers));
+    });
   }, [dispatch, token]);
 
   const updateData = (data) => {
     setUpdateReduxStore(data);
-  }
+  };
 
   // For Images => redux store
   useEffect(() => {
@@ -67,7 +69,8 @@ function App() {
       .get(`${FI_API}/getAllImages`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
-        }
+          "Access-Control-Allow-Credentials": "true",
+        },
       })
       .then((res) => {
         if (res.data.status === "false") {
@@ -84,7 +87,8 @@ function App() {
       .get(`${FI_API}/getAllFiles`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
-        }
+          "Access-Control-Allow-Credentials": "true",
+        },
       })
       .then((res) => {
         if (res.data.status === "false") {
@@ -107,11 +111,27 @@ function App() {
           <NavBar currentUser={currentUser} isLoggedIn={isLoggedIn} />
           <Routes>
             <Route exact path="/" element={<AllUsers />}></Route>
-            <Route exact path="/myProfile/:userid" element={<MyProfile socket={socket} updateData={updateData} />}></Route>
-            <Route exact path="/imageUpload/:userid" element={<ImageUpload updateData={updateData} />}></Route>
+            <Route
+              exact
+              path="/myProfile/:userid"
+              element={<MyProfile socket={socket} updateData={updateData} />}
+            ></Route>
+            <Route
+              exact
+              path="/imageUpload/:userid"
+              element={<ImageUpload updateData={updateData} />}
+            ></Route>
             <Route exact path="/allusers" element={<AllUsers />}></Route>
-            <Route exact path="/alluserdetails" element={<UserDetails />}></Route>
-            <Route exact path="/image/:userid" element={<ShowImage socket={socket} />}></Route>
+            <Route
+              exact
+              path="/alluserdetails"
+              element={<UserDetails />}
+            ></Route>
+            <Route
+              exact
+              path="/image/:userid"
+              element={<ShowImage socket={socket} />}
+            ></Route>
             <Route exact path="/register" element={<Register />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route path="*" element={<PageNotFound />}></Route>
