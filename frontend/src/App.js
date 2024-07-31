@@ -27,7 +27,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [updateReduxStore, setUpdateReduxStore] = useState(false);
-  axios.defaults.withCredentials = true;
 
   const token = Cookies.get("token");
   // for storinng current user to local strorage
@@ -48,11 +47,7 @@ function App() {
   };
 
   useEffect(() => {
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": "true",
-    };
+    const headers = {Authorization: `Bearer ${token}`};
     axios.get(`${USER_API}/userdetails`, { headers }).then((res) => {
       // setAllUsers(res.data.allUsers);
       dispatch(addUsers(res.data.allUsers));
@@ -66,12 +61,7 @@ function App() {
   // For Images => redux store
   useEffect(() => {
     axios
-      .get(`${FI_API}/getAllImages`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      })
+      .get(`${FI_API}/getAllImages`)
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);
@@ -84,12 +74,7 @@ function App() {
       });
     // For Files => redux store
     axios
-      .get(`${FI_API}/getAllFiles`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      })
+      .get(`${FI_API}/getAllFiles`)
       .then((res) => {
         if (res.data.status === "false") {
           alert(res.data.message);

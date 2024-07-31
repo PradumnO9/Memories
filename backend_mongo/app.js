@@ -11,9 +11,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://memories-ui-ten.vercel.app",
-        credential: true,
-        methods: ["GET", "POST", "PUT", "DELETE"]
+        origin: "https://memories-ui-ten.vercel.app"
     }
 });
 // const io = new Server(server, {
@@ -26,11 +24,7 @@ const PORT = process.env.PORT || 7000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({
-    origin: "https://memories-ui-ten.vercel.app",
-    credential: true,
-    methods: ["GET", "POST", "PUT", "DELETE"]
-}));
+app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/fi", FIRouter);
