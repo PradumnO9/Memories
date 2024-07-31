@@ -2,6 +2,7 @@
 
 - Using MERN Stack developed an efficient app which can handle multiple posts and each post have like/dislike, comments functonility for multiple users.
 - UI is simple and user friendly.
+- App URL => https://memories-ui-ten.vercel.app
 
 # Tech Stack
 
