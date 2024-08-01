@@ -123,10 +123,6 @@ const ShowImage = ({ socket }) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
-  useEffect(() => {
-    console.log(image, getData)
-  }, [])
   return (
     <>
       {isLoggedIn ? (
@@ -164,7 +160,7 @@ const ShowImage = ({ socket }) => {
                         </Card.Title>
                         <Card.Img
                           variant="top"
-                          src={`${FI_API}/showImage/${data.image.split("\\")[1]
+                          src={`${FI_API}/showImage/${data.image.split("/")[1]
                             }`}
                         />
                         <Card.Body>
@@ -256,7 +252,7 @@ const ShowImage = ({ socket }) => {
                           <Card.Title>{data.title}</Card.Title>
                           <Card.Text>{data.caption}</Card.Text>
                           <Button variant="warning" onClick={onClickHandler}>
-                            {data.file.split("\\")[1]}
+                            {data.file.split("/")[1]}
                           </Button>
                           <br />
                           <br />
