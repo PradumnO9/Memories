@@ -26,6 +26,10 @@ const AllUsers = () => {
       });
   }, []);
 
+  if (!allUsers) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <>
       {isLoggedIn ? (
