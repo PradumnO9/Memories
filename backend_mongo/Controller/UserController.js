@@ -118,7 +118,7 @@ exports.getAllUser = async (req, res) => {
 
 exports.userDetails = async (req, res) => {
     try {
-        const allUsers = await UserModel.find({}, { _id: 0, __v: 0, password: 0, images: 0, files: 0 });
+        const allUsers = await UserModel.find({}, { _id: 0, __v: 0, password: 0, images: 0, files: 0, mobile: 0 });
 
         jwt.verify(req.token, secretKey, (err, authData) => {
             if (err) {
