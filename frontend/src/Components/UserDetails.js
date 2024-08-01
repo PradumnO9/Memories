@@ -21,7 +21,6 @@ const AllUsers = () => {
                 <div className="container">
                   <div className="container__username">{data.username}</div>
                   <div className="container__email">{data.email}</div>
-                  <div className="container__mobile">{data.mobile}</div>
                 </div>
               </ul>
             );
