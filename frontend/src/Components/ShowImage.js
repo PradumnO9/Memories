@@ -123,6 +123,10 @@ const ShowImage = ({ socket }) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
+  useEffect(() => {
+    console.log(image, getData)
+  }, [])
   return (
     <>
       {isLoggedIn ? (
